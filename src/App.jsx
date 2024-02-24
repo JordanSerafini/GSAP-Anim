@@ -1,37 +1,34 @@
 // App.js
-import  { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
 function App() {
   const boxRef = useRef(null);
   const box2Ref = useRef(null);
   const box3Ref = useRef(null);
-  const horizontalScrollRef = useRef(null);
+  const scrollEffectRef = useRef(null);
 
-  const horizontalScroll=()=> {
-
-    gsap.to(horizontalScrollRef.current, {
+  const scrollEffect = () => {
+    gsap.to(scrollEffectRef.current, {
       scrollTrigger: {
         trigger: boxRef.current,
         start: "top-=600 top+=100",
-        end: "top-=300 top-=200",
+        end: "top-=300 top-=500",
         scrub: true,
-        markers: true,
+        markers: false,
         toggleActions: "play reverse play reverse",
       },
-      x: 450, y: 450,
+      x: 450,
+      y: 450,
       rotation: 360,
       opacity: 0,
       //duration: 3,
       scale: 0.3,
     });
-    
-  }
-  
+  };
 
   useEffect(() => {
     const boxAnimations = [
@@ -83,9 +80,88 @@ function App() {
 
   return (
     <div className="Body">
+      <div className="container-2">
+        <ul className="liste">
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+        <li className="list-item">lorem</li>
+          
 
-      <div className="Test" onClick={horizontalScroll} ref={horizontalScrollRef}>
-      <div className="product" >produit 1</div>
+        </ul>
+        <button>O</button>
+      </div>
+      <div
+        className="Test"
+        onClick={scrollEffect}
+        ref={scrollEffectRef}
+      >
+        <div className="product">produit 1</div>
         <div className="product">produit 2</div>
         <div className="product">produit 3</div>
         <div className="product">produit 4</div>
@@ -103,7 +179,6 @@ function App() {
           <p className="text">LOREM IPSUM DOLOR SIT AMET</p>
         </div>
       </div>
-
     </div>
   );
 }
