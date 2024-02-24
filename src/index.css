@@ -66,14 +66,14 @@ Body {
   list-style: none;
   display: flex;
   flex-direction: row;
-  gap: 8rem;
-  overflow: hidden;
+  gap: 0rem;
+  overflow: scroll;
 
 }
 
 .list-item {
   border: solid 1px black;
-  padding: 5rem;
+  padding: 10rem;
 }
 
 .container-2 {
