@@ -1,57 +1,60 @@
-import { useEffect, useRef } from "react";
+// App.js
+import  { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
+
 
 function App() {
   const boxRef = useRef(null);
   const box2Ref = useRef(null);
   const box3Ref = useRef(null);
-  /*
-  useEffect(() => {
-    [boxRef, box2Ref, box3Ref].forEach((box, index) => {
-      if (box.current) {
-        gsap.fromTo(
-          box.current,
-          { x: 0, opacity: 0, marker: true }, // état de départ
-          {
-            x: 250, //+ index * 100,
-            opacity: 1,
-            duration: 2,
-            scrollTrigger: {
-              trigger: box.current,
-              start: "top+=00 750", // premier start, second scroll start
-              end: "200 525",
-              scrub: true,
-              markers: true,
-              toggleActions: "play reverse play reverse",
-            },
-          }
-        );
-      }
+  const horizontalScrollRef = useRef(null);
+
+  const horizontalScroll=()=> {
+
+    gsap.to(horizontalScrollRef.current, {
+      scrollTrigger: {
+        trigger: boxRef.current,
+        start: "top-=600 top+=100",
+        end: "top-=300 top-=200",
+        scrub: true,
+        markers: true,
+        toggleActions: "play reverse play reverse",
+      },
+      x: 450, y: 450,
+      rotation: 360,
+      opacity: 0,
+      //duration: 3,
+      scale: 0.3,
     });
-  }, []);
-*/
+    
+  }
+  
 
   useEffect(() => {
     const boxAnimations = [
       {
         ref: boxRef,
         x: 250,
-        start: "top+=50 800",// start - scrollerStart
-        end: "300 500",
+        start: "top+=50 800",
+        end: "200 500",
+        duration: 2,
       },
       {
         ref: box2Ref,
         x: 350,
         start: "top+=120 900",
         end: "200 550",
+        duration: 2.5,
       },
       {
         ref: box3Ref,
         x: 450,
         start: "top+=140 1000",
         end: "200 600",
+        duration: 3,
       },
     ];
 
@@ -59,7 +62,7 @@ function App() {
       if (boxAnim.ref.current) {
         gsap.fromTo(
           boxAnim.ref.current,
-          { x: 0, opacity: 0 }, // état de départ
+          { x: 0, opacity: 0 },
           {
             x: boxAnim.x,
             opacity: 1,
@@ -69,7 +72,7 @@ function App() {
               start: boxAnim.start,
               end: boxAnim.end,
               scrub: true,
-              markers: true,
+              markers: false,
               toggleActions: "play reverse play reverse",
             },
           }
@@ -80,6 +83,15 @@ function App() {
 
   return (
     <div className="Body">
+
+      <div className="Test" onClick={horizontalScroll} ref={horizontalScrollRef}>
+      <div className="product" >produit 1</div>
+        <div className="product">produit 2</div>
+        <div className="product">produit 3</div>
+        <div className="product">produit 4</div>
+        <div className="product">produit 5</div>
+      </div>
+
       <div className="Container">
         <div className="Box" ref={boxRef}>
           <p className="text">LOREM IPSUM DOLOR SIT AMET</p>
@@ -91,6 +103,7 @@ function App() {
           <p className="text">LOREM IPSUM DOLOR SIT AMET</p>
         </div>
       </div>
+
     </div>
   );
 }

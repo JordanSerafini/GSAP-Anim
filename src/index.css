@@ -1,5 +1,5 @@
+/* styles.css */
 @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
-
 
 .Body {
   display: flex;
@@ -7,15 +7,16 @@
   width: 100vw;
   background-color: #303030;
   display: flex;
-  font-family: 'Kode Mono', monospace;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .Container {
-  margin-top: 800px;
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   gap: 5rem;
+  font-family: 'Kode Mono', monospace;
 }
 
 .Box {
@@ -35,4 +36,16 @@
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
+}
+
+.Test {
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 400px;
+  height: 5rem;
+  width: fit-content;
+  background-color: #3030bb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
