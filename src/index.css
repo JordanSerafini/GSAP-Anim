@@ -62,17 +62,16 @@ Body {
 }
 
 .liste {
-  background-color: red;
   list-style: none;
   display: flex;
   flex-direction: row;
   gap: 0rem;
   overflow: scroll;
-
+  color: white;
 }
 
 .list-item {
-  border: solid 1px black;
+  border: solid 1px whitesmoke;
   padding: 10rem;
 }
 

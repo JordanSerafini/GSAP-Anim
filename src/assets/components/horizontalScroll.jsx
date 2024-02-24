@@ -8,7 +8,7 @@ function HorizontalScroll() {
   const moveX = useRef(0);
   const listeRef = useRef(null);
 
-  const scrollDistance = 200;
+  const scrollDistance = 350;
 
   const scrollAndUpdateScale = (direction) => {
     // Calcul de la nouvelle position x en fonction de la direction du défilement
@@ -17,7 +17,7 @@ function HorizontalScroll() {
     // Animation de défilement horizontal
     gsap.to(".list-item", {
       x: moveX.current,
-      duration: 2,
+      duration: 0.5,
       ease: "power1.inOut",
       onUpdate: updateScale, // Mise à jour de l'échelle pendant l'animation
     });
