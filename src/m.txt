@@ -1,0 +1,69 @@
+  /*
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (boxRef.current) {
+      gsap.to(boxRef.current, {
+        scrollTrigger: {
+          trigger: boxRef.current,
+          start: "top center",
+          end: "top 100px",
+          scrub: true,
+          markers: true,
+          toggleActions: "play reverse play reverse",
+        },
+        x: 400,
+        rotation: 360,
+        duration: 3
+      });
+    }
+  }, []);
+
+  
+
+  useEffect(() => {
+    // Crée une timeline
+    const tl = gsap.timeline({ 
+      repeat: -1, // Répète l'animation indéfiniment
+      yoyo: true // Fait que l'animation se joue en arrière lors de la répétition pour un effet aller-retour
+    });
+  
+    // Ajoute des animations à la timeline avec des durées différentes
+    tl.to(boxRef.current, { x: 300, opacity: 0.5, duration: 2 }) // Se déplace sur l'axe X avec une durée de 2 secondes
+      .to(boxRef.current, { y: -250, opacity: 1, duration: 3 }) // Ensuite, se déplace sur l'axe Y avec une durée de 3 secondes
+      .to(boxRef.current, { x: 0, opacity: 0.5, duration: 1 }) // Revient à la position X initiale avec une durée de 1 seconde
+      .to(boxRef.current, { y: 0, opacity: 1, duration: 0.5 }); // Revient à la position Y initiale avec une durée de 0.5 seconde
+  }, []);
+
+ 
+
+  useEffect(() => {
+  
+    // Crée une timeline avec ScrollTrigger
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: boxRef.current, // l'élément qui déclenche l'animation
+        start: "top center", // Quand le haut de `trigger` atteint le centre du viewport
+        end: "bottom top", // Quand le bas de `trigger` quitte le haut du viewport
+        scrub: true, // Lisse l'animation et la lie au scroll
+        markers: true, // Décommente pour voir les marqueurs de déclenchement (utile pour le débogage)
+      }
+    })
+    .to(boxRef.current, { x: 100, opacity: 0.5, duration: 2 })
+    .to(boxRef.current, { y: -75, opacity: 1, duration: 3 })
+    .to(boxRef.current, { x: 0, opacity: 0.5, duration: 1 })
+    .to(boxRef.current, { y: 0, opacity: 1, duration: 0.5 });
+  }, []);
+  
+ 
+  
+  useEffect(() => {
+    
+    const boxes = [boxRef, box2Ref, box3Ref];
+    boxes.forEach((box, index) => {
+      gsap.fromTo(box.current, 
+        { x: 0, opacity: 0 }, 
+        { x: 350, opacity: 1, duration: 1, delay: index * 0.8 });
+    });
+  }, []);
+    */

@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+
+.Body {
+  display: flex;
+  height: 1000vh;
+  width: 100vw;
+  background-color: #303030;
+  display: flex;
+  font-family: 'Kode Mono', monospace;
+  flex-direction: column;
+}
+
+.Container {
+  margin-top: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.Box {
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 5rem;
+  width: fit-content;
+  background-color: #bb3030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
