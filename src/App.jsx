@@ -11,6 +11,8 @@ function App() {
   const box3Ref = useRef(null);
   const scrollEffectRef = useRef(null);
 
+  const moveX = useRef(0);
+
   const scrollEffect = () => {
     gsap.to(scrollEffectRef.current, {
       scrollTrigger: {
@@ -78,83 +80,71 @@ function App() {
     });
   }, []);
 
+  const horizontalScroll = () => {
+    gsap.to(".list-item", {
+      x: -1500, 
+      scale: 0.3, 
+      duration: 5, 
+      ease: "power1.inOut", 
+      
+    });
+  }
+
+  const animateSequence = () => {
+    // Créer une timeline GSAP
+    const tl = gsap.timeline({ defaults: { duration: 1, ease: 'power1.out' } });
+  
+    // Ajouter une animation qui déplace l'élément vers la droite
+    tl.to(".list-item", { x: 100 });
+  
+    // Ensuite, mettre à l'échelle l'élément à 0.3
+    tl.to(".list-item", { scale: 0.3 });
+  
+    // Enfin, faire tourner l'élément de 360 degrés
+    tl.to(".list-item", { rotation: 360 });
+  
+    // Vous pouvez également ajouter des labels et jouer des animations à des moments spécifiques
+    // tl.addLabel("label1")
+    //   .to(".list-item", { x: 100 }, "label1")
+    //   .to(".list-item", { scale: 0.3 }, "label1+=0.5") // Démarrer cette animation 0.5 seconde après le label1
+    //   .to(".list-item", { rotation: 360 }, "label1+=1"); // Démarrer cette animation 1 seconde après le label1
+  }
+  
+const horizontalScroll2 = (e) => {
+  gsap.to(e.target, {
+    x: -250,
+    scale: 0.3,
+    duration: 5,
+    ease: "power1.inOut",
+  });
+};
+
+const horizontalScroll3 = () => { // OK
+  moveX.current -= 500;
+  gsap.to(".list-item", {
+    x: moveX.current,
+    duration: 2,
+    ease: "power1.inOut",
+  });
+};
+
+
+
+  
+
   return (
     <div className="Body">
       <div className="container-2">
         <ul className="liste">
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-        <li className="list-item">lorem</li>
-          
-
+        {new Array(50).fill(null).map((_, index) => (
+            <li key={index} className="list-item" onClick={horizontalScroll2}>
+              lorem
+            </li>
+          ))}
         </ul>
-        <button>O</button>
+        <button onClick={horizontalScroll}>O</button>
+        <button onClick={animateSequence}>X</button>
+        <button onClick={horizontalScroll3}>T</button>
       </div>
       <div
         className="Test"
