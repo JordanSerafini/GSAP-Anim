@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 
 import Image from "../assets/image.webp";
 import Vader from "../assets/vador.jpg";
+import Lac from "../assets/lac.jpg";
 
 
 function HorizontalScroll() {
