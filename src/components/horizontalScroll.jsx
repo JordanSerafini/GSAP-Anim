@@ -1,11 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Image from "../assets/image.webp";
 import Vader from "../assets/vador.jpg";
 
-gsap.registerPlugin(ScrollTrigger);
 
 function HorizontalScroll() {
   const moveX = useRef(0);
@@ -122,8 +120,7 @@ useEffect(() => {
 
   const listeElement = listeRef.current;
   const handleScroll = () => {
-    // Appelé à chaque événement de défilement, mais `findCenterItem` ne sera appelé que
-    // après que le défilement se soit arrêté grâce au debounce
+    // findCenterItem ne sera appelé que après que le défilement se soit arrêté grâce au debounce
     debouncedFindCenterItem();
   };
 
@@ -134,9 +131,7 @@ useEffect(() => {
   };
 }, [findCenterItem]); // Assurez-vous de ne pas avoir de dépendances inutiles ici
 
-// ...
-
-
+  /*---------------------------------------------------*/
 
 
   return (
