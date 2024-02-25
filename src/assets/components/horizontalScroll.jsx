@@ -9,20 +9,6 @@ function HorizontalScroll() {
   const listeRef = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // Distance de défilement
-  const scrollDistance = 350;
-
-  // Déclenche le défilement et la mise à jour de l'échelle
-  const scrollAndUpdateScale = (direction) => {
-    moveX.current += direction === "right" ? scrollDistance : -scrollDistance;
-    gsap.to(".list-item", {
-      x: moveX.current,
-      duration: 0.5,
-      ease: "power1.inOut",
-      onUpdate: updateScale,
-    });
-  };
-
   // Met à l'échelle les éléments en fonction de leur position après le défilement
   const updateScale = useCallback(() => {
     const center = windowWidth / 2; // Utiliser windowWidth du state pour le centre
@@ -70,55 +56,13 @@ function HorizontalScroll() {
       listeElement.removeEventListener("scroll", handleScroll);
     };
   }, [windowWidth, updateScale]);
-  
-/*
-  const findCenterItem = useCallback(() => {
-    const list = listeRef.current;
-    if (!list) return;
-  
-    const listItems = list.children; // Si les éléments sont des enfants directs
-    const listCenter = list.scrollLeft + list.clientWidth / 2;
-  
-    let closestDistanceToCenter = Infinity;
-    let centerItem = null;
-  
-    Array.from(listItems).forEach((item, index) => {
-      const itemLeft = item.offsetLeft - list.scrollLeft;
-      const itemCenter = itemLeft + item.clientWidth / 2;
-      const distanceToCenter = Math.abs(listCenter - itemCenter);
-  
-      if (distanceToCenter < closestDistanceToCenter) {
-        closestDistanceToCenter = distanceToCenter;
-        centerItem = item;
-      }
-    });
-  
-    if (centerItem) {
-      console.log("Element at center:", centerItem.dataset.index); // Utilisez dataset pour accéder à l'index
-    }
-  }, [windowWidth]); // windowWidth est nécessaire ici si la largeur de la fenêtre affecte le centrage
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const centerItem = findCenterItem();
-      if (centerItem) {
-        // Vous pouvez maintenant utiliser `centerItem` pour voir quel élément est au centre
-        console.log("Element at center:", centerItem);
-      }
-    };
+  
 
-    const listeElement = listeRef.current;
-    listeElement.addEventListener("scroll", handleScroll);
-
-    return () => {
-      listeElement.removeEventListener("scroll", handleScroll);
-    };
-  }, []); // Assurez-vous de gérer correctement les dépendances si nécessaire
-*/
   return (
     <div className="container-2">
       <ul className="liste" ref={listeRef}>
-        {new Array(50).fill(null).map((_, index) => (
+        {new Array(500).fill(null).map((_, index) => (
           <li key={index} className="list-item" data-index={index}>
             {index}
           </li>
