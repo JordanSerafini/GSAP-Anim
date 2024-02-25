@@ -1,0 +1,151 @@
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+.Main {
+  height: 1000vh;
+  /*background-color: #303030; */
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Container {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  font-family: 'Kode Mono', monospace;
+}
+
+.Box {
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 5rem;
+  width: 18rem;
+  background-color: #bb3030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Test {
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 400px;
+  height: 5rem;
+  width: fit-content;
+  background-color: #3030bb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.liste {
+  padding-right: 51%;
+  padding-left: 51%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap:1rem;
+  overflow-y: hidden;
+  justify-content: flex-start;
+}
+
+.list-item {
+  background-color: ;
+  border: solid 1px whitesmoke;
+  color:rgba(31, 30,  30, 0.918);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: small;
+
+  min-width: 170px;
+  height: 220px;
+  overflow: scroll;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.container-2 {
+  display: flex;
+  flex-direction: column;
+  height: 17rem;
+  border: solid 1px white;
+  justify-content: start;
+  
+}
+
+.Item-Text {
+  margin-top: 15%;
+  height: 55%;
+  max-width: 100%;
+  overflow: scroll;
+  text-align: center;
+}
+
+.image {
+  height: 55%;
+  width: 85%;
+  /*border-radius: 50%;*/
+
+}
+
+.image-shadow {
+  /*display: inline-block; */
+  margin: auto; 
+  box-shadow: 0 18px 20px rgba(0, 0, 0, 0.438); /* x-offset, y-offset, blur-radius, color */
+  border-radius: 4px; /* si vous voulez des bords arrondis */
+}
+
+/* query params sous les 500 widht */
+@media (max-width: 500px) {
+
+  .liste {
+    
+   
+  }
+  .list-item {
+    height: 150px;
+    margin: 0;
+    padding: 0;
+    justify-content: start;
+  }
+  .container-2 {
+
+  }
+
+  .Item-Text {
+    height: 45%;
+  }
+  
+  .image {
+    height: 55%;
+    width: 85%;
+    
+
+
+  }
+
+  .index {
+    display: none;
+  }
+}
