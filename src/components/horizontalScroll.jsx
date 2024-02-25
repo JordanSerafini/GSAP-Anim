@@ -11,6 +11,9 @@ function HorizontalScroll() {
   const listeRef = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const [selectedIem, setSelectedItem] = useState(null);
+
+
   // Met à l'échelle les éléments en fonction de leur position après le défilement
   const updateScale = useCallback(() => {
     const center = windowWidth / 2; // Utiliser windowWidth du state pour le centre
@@ -61,7 +64,18 @@ function HorizontalScroll() {
 
 
   /*---------------------------------------------------*/
-
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
 
   const findCenterItem = useCallback(() => {
     const list = listeRef.current;
@@ -92,27 +106,35 @@ function HorizontalScroll() {
   
     // Retourner l'élément le plus proche du centre
     if (centerItem) {
-      console.log("Element at center:", centerItem.dataset.index);
+      const itemId = centerItem.dataset.index;
+      setSelectedItem(itemId);
     }
   }, []); 
    
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const centerItem = findCenterItem();
-      if (centerItem) {
-        // Vous pouvez maintenant utiliser `centerItem` pour voir quel élément est au centre
-        console.log("Element at center:", centerItem);
-      }
-    };
+  // ...
+useEffect(() => {
+  // Fonction déclenchée après que le défilement se soit arrêté
+  const debouncedFindCenterItem = debounce(() => {
+    findCenterItem();
+  }, 50); 
 
-    const listeElement = listeRef.current;
-    listeElement.addEventListener("scroll", handleScroll);
+  const listeElement = listeRef.current;
+  const handleScroll = () => {
+    // Appelé à chaque événement de défilement, mais `findCenterItem` ne sera appelé que
+    // après que le défilement se soit arrêté grâce au debounce
+    debouncedFindCenterItem();
+  };
 
-    return () => {
-      listeElement.removeEventListener("scroll", handleScroll);
-    };
-  }, [findCenterItem]);
+  listeElement.addEventListener("scroll", handleScroll);
+
+  return () => {
+    listeElement.removeEventListener("scroll", handleScroll);
+  };
+}, [findCenterItem]); // Assurez-vous de ne pas avoir de dépendances inutiles ici
+
+// ...
+
 
 
 
@@ -124,10 +146,10 @@ function HorizontalScroll() {
             {index}
             <img src={Image} className="image" alt="" />
             <h3>L&apos;orbe mystère</h3>
-            
           </li>
         ))}
       </ul>
+      {selectedIem}
       
     </div>
   );
