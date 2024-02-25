@@ -82,6 +82,12 @@
   justify-content: center;
   align-items: center;
   color:rgba(31, 30, 30, 0.918);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: small;
+
+  overflow: scroll;
+
+
 }
 
 .container-2 {
@@ -93,11 +99,26 @@
   
 }
 
+.Item-Text {
+  margin-top: 15%;
+  height: 55%;
+  max-width: 100%;
+  overflow: scroll;
+  text-align: center;
+}
+
 .image {
   height: 55%;
   width: 85%;
   /*border-radius: 50%;*/
 
+}
+
+.image-shadow {
+  /*display: inline-block; */
+  margin: auto; 
+  box-shadow: 0 18px 20px rgba(0, 0, 0, 0.438); /* x-offset, y-offset, blur-radius, color */
+  border-radius: 4px; /* si vous voulez des bords arrondis */
 }
 
 /* query params sous les 500 widht */

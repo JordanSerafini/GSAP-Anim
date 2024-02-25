@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Image from "../assets/image.webp";
+import Vader from "../assets/vador.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -144,8 +145,8 @@ useEffect(() => {
         {new Array(500).fill(null).map((_, index) => (
           <li key={index} className="list-item" data-index={index}>
             {index}
-            <img src={Image} className="image" alt="" />
-            <h3>L&apos;orbe mystère</h3>
+            <img src={Image} className="image image-shadow" alt="" />
+            <h3 className="Item-Text">L&apos;orbe mystère</h3>
           </li>
         ))}
       </ul>
