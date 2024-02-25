@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import HorizontalScroll from "./assets/components/horizontalScroll";
+import HorizontalScroll from "./components/horizontalScroll";
 
 function App() {
   const boxRef = useRef(null);

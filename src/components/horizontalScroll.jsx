@@ -2,6 +2,8 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Image from "../assets/image.webp";
+
 gsap.registerPlugin(ScrollTrigger);
 
 function HorizontalScroll() {
@@ -57,7 +59,62 @@ function HorizontalScroll() {
     };
   }, [windowWidth, updateScale]);
 
+
+  /*---------------------------------------------------*/
+
+
+  const findCenterItem = useCallback(() => {
+    const list = listeRef.current;
+    if (!list) return;
   
+    // Calculer le centre de la fenêtre d'affichage
+    const viewportCenter = list.scrollLeft + list.clientWidth / 2;
+  
+    // Initialiser les variables pour stocker l'élément le plus proche du centre
+    let centerItem = null;
+    let smallestDistanceToCenter = Infinity;
+  
+    // Récupérer tous les éléments de la liste
+    const listItems = Array.from(list.querySelectorAll('.list-item'));
+  
+    // Parcourir tous les éléments pour trouver celui qui est le plus proche du centre
+    listItems.forEach(item => {
+      // Calculer le centre de l'élément
+      const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+      const distanceToCenter = Math.abs(viewportCenter - itemCenter);
+  
+      // Mettre à jour l'élément le plus proche du centre si nécessaire
+      if (distanceToCenter < smallestDistanceToCenter) {
+        smallestDistanceToCenter = distanceToCenter;
+        centerItem = item;
+      }
+    });
+  
+    // Retourner l'élément le plus proche du centre
+    if (centerItem) {
+      console.log("Element at center:", centerItem.dataset.index);
+    }
+  }, []); 
+   
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const centerItem = findCenterItem();
+      if (centerItem) {
+        // Vous pouvez maintenant utiliser `centerItem` pour voir quel élément est au centre
+        console.log("Element at center:", centerItem);
+      }
+    };
+
+    const listeElement = listeRef.current;
+    listeElement.addEventListener("scroll", handleScroll);
+
+    return () => {
+      listeElement.removeEventListener("scroll", handleScroll);
+    };
+  }, [findCenterItem]);
+
+
 
   return (
     <div className="container-2">
@@ -65,6 +122,9 @@ function HorizontalScroll() {
         {new Array(500).fill(null).map((_, index) => (
           <li key={index} className="list-item" data-index={index}>
             {index}
+            <img src={Image} className="image" alt="" />
+            <h3>L&apos;orbe mystère</h3>
+            
           </li>
         ))}
       </ul>

@@ -13,7 +13,7 @@
 
 .Main {
   height: 1000vh;
-  background-color: #303030;
+  /*background-color: #303030; */
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -73,9 +73,15 @@
 }
 
 .list-item {
+  background-color: ;
   min-width: 170px;
   border: solid 1px whitesmoke;
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:rgba(31, 30, 30, 0.918);
 }
 
 .container-2 {
@@ -83,8 +89,15 @@
   flex-direction: column;
   height: 15rem;
   border: solid 1px white;
-  justify-content: center;
+  justify-content: start;
   
+}
+
+.image {
+  height: 55%;
+  width: 85%;
+  /*border-radius: 50%;*/
+
 }
 
 /* query params sous les 500 widht */
