@@ -4,10 +4,25 @@ import { gsap } from "gsap";
 
 
 
-function HorizontalScroll({image, title}) {
+function HorizontalScroll() {
   const moveX = useRef(0);
   const listeRef = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const [cardData, setCardData] = useState([
+    { id: 1, title: "Card 1", image: "https://via.placeholder.com/150" },
+    { id: 2, title: "Card 2", image: "https://via.placeholder.com/150" },
+    { id: 3, title: "Card 3", image: "https://via.placeholder.com/150" },
+    { id: 4, title: "Card 4", image: "https://via.placeholder.com/150" },
+    { id: 5, title: "Card 5", image: "https://via.placeholder.com/150" },
+    { id: 6, title: "Card 6", image: "https://via.placeholder.com/150" },
+    { id: 7, title: "Card 7", image: "https://via.placeholder.com/150" },
+    { id: 8, title: "Card 8", image: "https://via.placeholder.com/150" },
+    { id: 9, title: "Card 9", image: "https://via.placeholder.com/150" },
+    { id: 10, title: "Card 10", image: "https://via.placeholder.com/150" },
+  ]);
+
+
 
   const [selectedIem, setSelectedItem] = useState(null);
 
@@ -136,18 +151,21 @@ useEffect(() => {
   return (
     <div className="container-2">
       <ul className="liste" ref={listeRef}>
-        {new Array(500).fill(null).map((_, index) => (
-          <li key={index} className="list-item" data-index={index}>
-            <div className="index">{index}</div>
-            <img src={image} className="image image-shadow" alt="" />
-            <h3 className="Item-Text">{title}</h3>
+        {cardData.map((card) => (
+          <li key={card.id} className="list-item" data-index={card.id}>
+            <div className="index">{card.id}</div>
+            <img src={card.image} className="image image-shadow" alt={card.title} />
+            <h3 className="Item-Text">{card.title}</h3>
           </li>
         ))}
       </ul>
-      {selectedIem}
-      
+      {selectedIem && (
+        <div className="selected-item-info">
+          Selected Item ID: {selectedIem}
+        </div>
+      )}
     </div>
   );
-}
+}  
 
 export default HorizontalScroll;
