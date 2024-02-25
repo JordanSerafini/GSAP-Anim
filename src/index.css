@@ -12,13 +12,12 @@
 }
 
 .Main {
-  display: flex;
   height: 1000vh;
   background-color: #303030;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-x: hidden;
 }
 
 .Container {
@@ -61,18 +60,18 @@
 }
 
 .liste {
+  width: 100vw;
   list-style: none;
   display: flex;
   flex-direction: row;
-  gap: 0rem;
-  overflow: hidden;
   color: white;
+  overflow: auto;
 }
 
 .list-item {
   border: solid 1px whitesmoke;
-  height: 250px;
-  width: 500px;
+  height: 170px;
+  width: ;
 }
 
 .container-2 {
