@@ -52,6 +52,7 @@
 }
 
 .liste {
+  padding-right: 51%;
   padding-left: 51%;
   list-style: none;
   display: flex;

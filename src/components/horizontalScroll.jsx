@@ -20,10 +20,13 @@ function HorizontalScroll() {
     { id: 8, title: "Card 8", image: "https://via.placeholder.com/150" },
     { id: 9, title: "Card 9", image: "https://via.placeholder.com/150" },
     { id: 10, title: "Card 10", image: "https://via.placeholder.com/150" },
+    { id: 11, title: "Card 10", image: "https://via.placeholder.com/150" },
+    { id: 12, title: "Card 10", image: "https://via.placeholder.com/150" },
+    { id: 13, title: "Card 10", image: "https://via.placeholder.com/150" },
+    { id: 14, title: "Card 10", image: "https://via.placeholder.com/150" },
+    { id: 15, title: "Card 10", image: "https://via.placeholder.com/150" },
+    { id: 16, title: "Card 10", image: "https://via.placeholder.com/150" },
   ]);
-
-
-
   const [selectedIem, setSelectedItem] = useState(null);
 
 
@@ -161,7 +164,7 @@ useEffect(() => {
       </ul>
       {selectedIem && (
         <div className="selected-item-info">
-          Selected Item ID: {selectedIem}
+          {selectedIem}
         </div>
       )}
     </div>
