@@ -1,12 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 
-import Image from "../assets/image.webp";
-import Vader from "../assets/vador.jpg";
-import Lac from "../assets/lac.jpg";
 
 
-function HorizontalScroll() {
+
+function HorizontalScroll({image, title}) {
   const moveX = useRef(0);
   const listeRef = useRef(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -140,9 +138,9 @@ useEffect(() => {
       <ul className="liste" ref={listeRef}>
         {new Array(500).fill(null).map((_, index) => (
           <li key={index} className="list-item" data-index={index}>
-            {index}
-            <img src={Image} className="image image-shadow" alt="" />
-            <h3 className="Item-Text">L&apos;orbe mystère</h3>
+            <div className="index">{index}</div>
+            <img src={image} className="image image-shadow" alt="" />
+            <h3 className="Item-Text">{title}</h3>
           </li>
         ))}
       </ul>

@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Image from "./assets/image.webp";
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 import HorizontalScroll from "./components/horizontalScroll";
@@ -82,7 +85,7 @@ function App() {
 
   return (
     <div className="Main">
-      <HorizontalScroll />
+      <HorizontalScroll title="l'orbe mystere" image={Image} />
       
       <div className="Test" onClick={scrollEffect} ref={scrollEffectRef}>
         <div className="product">produit 1</div>
