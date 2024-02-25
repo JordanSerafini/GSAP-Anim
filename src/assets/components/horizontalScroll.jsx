@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -21,7 +21,7 @@ function HorizontalScroll() {
   };
 
   // Met à l'échelle les éléments en fonction de leur position après le défilement
-  const updateScale = () => {
+  const updateScale = useCallback(() => {
     const center = windowWidth / 2; // Utiliser windowWidth du state pour le centre
 
     gsap.utils.toArray('.list-item').forEach((item) => {
@@ -31,7 +31,7 @@ function HorizontalScroll() {
       const scale = Math.max(0.3, 1 - distanceFromCenter / center);
       gsap.to(item, { scale: scale, ease: 'none', duration: 0.5 });
     });
-  };
+  }, [windowWidth]);
 
   // Distance de défilement
   const scrollDistance = 350;
@@ -41,7 +41,7 @@ function HorizontalScroll() {
     // Mise à jour de la position x initiale et de l'échelle
     moveX.current = 0;
     updateScale();
-  }, []);
+  }, [updateScale]);
 
   // Écouteur de redimensionnement de la fenêtre pour ajuster la mise à l'échelle
   useEffect(() => {
@@ -69,7 +69,7 @@ function HorizontalScroll() {
     return () => {
       listeElement.removeEventListener('scroll', handleScroll);
     };
-  }, [windowWidth, updateScale]); // Se re-abonne lorsque windowWidth change
+  }, [windowWidth, updateScale]); 
 
 
 
