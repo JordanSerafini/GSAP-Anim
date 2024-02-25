@@ -81,7 +81,7 @@ function App() {
   }, []);
 
   return (
-    <div className="Body">
+    <div className="Main">
       <HorizontalScroll />
       
       <div className="Test" onClick={scrollEffect} ref={scrollEffectRef}>

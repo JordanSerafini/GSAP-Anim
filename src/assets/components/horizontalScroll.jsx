@@ -1,5 +1,5 @@
 import { gsap } from "gsap";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,6 +9,12 @@ function HorizontalScroll() {
   const listeRef = useRef(null);
 
   const scrollDistance = 350;
+
+  useEffect(() => {
+    // Initialisation de la position x
+    moveX.current = 0;
+    updateScale();
+  }, []);
 
   const scrollAndUpdateScale = (direction) => {
     // Calcul de la nouvelle position x en fonction de la direction du défilement
