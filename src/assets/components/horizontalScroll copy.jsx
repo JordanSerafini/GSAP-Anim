@@ -71,7 +71,7 @@ function HorizontalScroll() {
     };
   }, [windowWidth, updateScale]);
   
-/*
+
   const findCenterItem = useCallback(() => {
     const list = listeRef.current;
     if (!list) return;
@@ -114,7 +114,7 @@ function HorizontalScroll() {
       listeElement.removeEventListener("scroll", handleScroll);
     };
   }, []); // Assurez-vous de gérer correctement les dépendances si nécessaire
-*/
+
   return (
     <div className="container-2">
       <ul className="liste" ref={listeRef}>
@@ -124,7 +124,8 @@ function HorizontalScroll() {
           </li>
         ))}
       </ul>
-      
+      <button onClick={() => scrollAndUpdateScale("left")}>⬅️</button>
+      <button onClick={() => scrollAndUpdateScale("right")}>➡️</button>
     </div>
   );
 }
