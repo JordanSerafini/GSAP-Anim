@@ -73,7 +73,7 @@ function App() {
               start: boxAnim.start,
               end: boxAnim.end,
               scrub: true,
-              markers: false,
+              markers: true,
               toggleActions: "play reverse play reverse",
             },
           }
@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div className="Main">
-      <HorizontalScroll title="l'orbe mystere" image={Image} />
+      <HorizontalScroll />
       
       <div className="Test" onClick={scrollEffect} ref={scrollEffectRef}>
         <div className="product">produit 1</div>

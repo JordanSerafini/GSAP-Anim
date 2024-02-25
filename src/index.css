@@ -1,8 +1,6 @@
 /* styles.css */
 @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
 
-
-
 .Main {
   height: 1000vh;
   /*background-color: #303030; */
@@ -66,6 +64,7 @@
 }
 
 .list-item {
+
   background-color: ;
   border: solid 1px whitesmoke;
   color:rgba(31, 30,  30, 0.918);
